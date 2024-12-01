@@ -1,12 +1,12 @@
 ## Main Results on ImageNet with Pretrained Models
  We train Semantic FPN models on the ADE20K dataset for 40,000 iterations using standard training settings from the MMSegmentation toolkit. The input images are cropped to a resolution of 512×512 during training.
 
-| Model      | Params(M) | Latency(ms) | mIoU | Ckpt. | Log |
-|:-----------|:---------:|:-----------:|:----:|:-----:|:---:|
-| iFormer-M  |    8.9    |    4.00     | 42.4 |       |     |
-| iFormer-L  |   14.7    |    6.60     | 44.5 |       |     |
-| iFormer-L2 |   24.5    |    9.06     | 46.2 |       |     |
-* The backbone Core ML model is the same as that in detection.
+| Model      | Params(M) | Latency(ms) | mIoU |                                                                                            Ckpt.                                                                                             |                                                   Log                                                    |
+|:-----------|:---------:|:-----------:|:----:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|
+| iFormer-M  |    8.9    |    4.00     | 42.4 |                                           [40000 iters](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_m_iter_40000.pth)                                           | [40000 iters](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_m_iter_40000.log) |
+| iFormer-L  |   14.7    |    6.60     | 44.5 |                                           [40000 iters](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_l_iter_40000.pth)                                           | [40000 iters](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_l_iter_40000.log) |
+| iFormer-L2 |   24.5    |    9.06     | 46.2 |                                          [40000 iters](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_l2_iter_40000.pth)|                                             [40000 iters](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_l2_iter_40000.log)   |
+* As detection, we have lost some original checkpoints corresponding to the performance reported in the paper due to certain errors. And we may reproduce these results using a different number of GPUs. As a result, the batch size per GPU and performance may not be consistent with those presented in the paper. In some cases, our results surpass those reported in the original study. But you can simply train all models using 8 GPUs, which was our original setting.
 ## Getting Started
 ### Requirements
 Please see the official [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) for installation.
