@@ -857,6 +857,22 @@ def iFormer_m(pretrained=False, in_22k=False, **kwargs):
                      block_types=block_types, **kwargs)
     return model
 
+"""
+All models named faster are only used for latency measurement of detection and segmentation here.
+"""
+@register_model
+def iFormer_m_faster(pretrained=False, in_22k=False, **kwargs):
+    depths = [2, 2, 22, 6]
+    block_types = ['ConvBlock_k7_r4'] * 2 + ['ConvBlock_k7_r4'] * 2 + ['ConvBlock_k7_r4'] * 9 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wsp1_fa1', 'FFN2d_r3'] + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 2 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wre1_fa1', 'FFN2d_r3'] + ['ConvBlock_k7_r4'] + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr4_act0_nh1_fa1', 'FFN2d_r3'] * 2
+    model = iFormer(depths=depths, dims=[48, 96, 192, 384], use_bn=True, conv_stem_type='FusedIB',
+                     downsample_kernels=[5, 3, 3, 3],
+                     block_types=block_types, **kwargs)
+    return model
+
 @register_model
 def iFormer_l(pretrained=False, in_22k=False, **kwargs):
     depths = [2, 2, 33, 6]
@@ -869,12 +885,40 @@ def iFormer_l(pretrained=False, in_22k=False, **kwargs):
     return model
 
 @register_model
+def iFormer_l_faster(pretrained=False, in_22k=False, **kwargs):
+    depths = [2, 2, 33, 6]
+    block_types = ['ConvBlock_k7_r4'] * 2 + ['ConvBlock_k7_r4'] * 2 + ['ConvBlock_k7_r4'] * 8 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wsp1_fa1', 'FFN2d_r3'] * 1 +\
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 5 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wre1_fa1', 'FFN2d_r3'] * 1 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 1 + ['ConvBlock_k7_r4'] + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr4_act0_nh1_fa1', 'FFN2d_r3'] * 2
+    model = iFormer(depths=depths, dims=[48, 96, 256, 384], use_bn=True, conv_stem_type='FusedIB',
+                     downsample_kernels=[5, 3, 3, 3],
+                     block_types=block_types, **kwargs)
+    return model
+
+@register_model
 def iFormer_l2(pretrained=False, in_22k=False, **kwargs):
     depths = [3, 3, 46, 9]
     block_types = ['ConvBlock_k7_r4'] * 3 + ['ConvBlock_k7_r4'] * 3 + ['ConvBlock_k7_r4'] * 12 + \
                   ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1', 'FFN2d_r3'] * 11 + ['ConvBlock_k7_r4'] + \
                   ['RepCPE_k3', 'SHMABlock_r1_hdrr4_act0_nh1', 'FFN2d_r3'] * 3
     model = iFormer(depths=depths, dims=[64, 128, 256, 512], use_bn=True, conv_stem_type='FusedIB',
+                     downsample_kernels=[5, 3, 3, 3],
+                     block_types=block_types, **kwargs)
+    return model
+
+@register_model
+def iFormer_l2_faster(pretrained=False, in_22k=False, **kwargs):
+    depths = [3, 3, 46, 9]
+    block_types = ['ConvBlock_k7_r4'] * 3 + ['ConvBlock_k7_r4'] * 3 + ['ConvBlock_k7_r4'] * 12 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wsp1_fa1', 'FFN2d_r3'] * 1 +\
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 9 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wre1_fa1', 'FFN2d_r3'] * 1 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 1 + ['ConvBlock_k7_r4'] + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr4_act0_nh1_fa1', 'FFN2d_r3'] * 3
+    model = iFormer(depths=depths, dims=[48, 128, 256, 448], use_bn=True, conv_stem_type='FusedIB',
                      downsample_kernels=[5, 3, 3, 3],
                      block_types=block_types, **kwargs)
     return model
