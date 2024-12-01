@@ -1,0 +1,15 @@
+model: iFormer_l
+batch_size: 512
+lr: 4e-3
+num_workers: 16
+update_freq: 1
+model_ema: False
+model_ema_eval: False
+use_amp: False
+save_ckpt_freq: 1
+epochs: 300
+drop_path: 0.1
+layer_scale_init_value: 0
+# distillation_type: hard
+data_path: imagenet_path
+output_dir: output/iFormer_l
