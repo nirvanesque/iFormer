@@ -1,5 +1,5 @@
-# [IFORMER: INTEGRATING CONVNET AND TRANS- FORMER FOR MOBILE APPLICATION](https://openreview.net/forum?id=4ytHislqDS)
-Official PyTorch implementation of **iFormer**, published on **ICLR 2025**.
+# [IFORMER: INTEGRATING CONVNET AND TRANS- FORMER FOR MOBILE APPLICATION](https://arxiv.org/abs/2501.15369)
+Official PyTorch implementation of **iFormer**, published on [**ICLR 2025**](https://openreview.net/forum?id=4ytHislqDS).
 
 <br/>
 <details>
@@ -22,7 +22,8 @@ surpassing the recently proposed MobileNetV4 under similar latency constraints. 
 <br/>
 
 ## **What's New** 💥💥💥
-- [2025/12/1] All models have been released.
+- [2025/1/23] Our paper has beed accepted by ICLR 2025.
+- [2024/12/1] All models have been released.
 
 ## Main Results on ImageNet with Pretrained Models
 | Model      | Params(M) | GMACs | Latency(ms) | Top-1(%)  |                                                                                             Ckpt.                                                                                              |                                                                                                          Core ML                                                                                                          |                                                                                               Log                                                                                               |
@@ -69,13 +70,13 @@ We use a standard ImageNet dataset, you can download it from http://image-net.or
 ### Training
 ```bash
 python -m torch.distributed.launch --nproc_per_node=8  \
-    train.py \
+    main.py \
     --cfg-path configs/iFormer_m.yaml
 ```
 ### Evaluation
 ```bash
 python -m torch.distributed.launch --nproc_per_node=1  \
-    train.py  \
+    main.py  \
     --model iFormer_m \
     --input_size 224 \
     --num_workers 16 \
@@ -91,7 +92,7 @@ This should give
 Distillation
 ```bash
 python -m torch.distributed.launch --nproc_per_node=1  \
-    train.py  \
+    main.py  \
     --model iFormer_m \
     --input_size 224 \
     --num_workers 16 \
@@ -109,7 +110,7 @@ This should give
 Layer scale
 ```bash
 python -m torch.distributed.launch --nproc_per_node=1  \
-    train.py  \
+    main.py  \
     --model iFormer_h \
     --input_size 224 \
     --num_workers 16 \
@@ -153,7 +154,16 @@ Image Classification code is partly built with [ConvNeXt](https://github.com/fac
 
 Object detection & instance segmentation are trained on [MMDetection toolkit](https://github.com/open-mmlab/mmdetection).
 
-Semantic segmentation is trained on [MMSegmentation toolkit](https://github.com/open-mmlab/mmsegmentation)).
+Semantic segmentation is trained on [MMSegmentation toolkit](https://github.com/open-mmlab/mmsegmentation).
 
 Sincerely appreciate their elegant implementations!
 ## Citation
+If you find this repository helpful, please consider citing:
+```
+@article{zheng2025iformer,
+  title={iFormer: Integrating ConvNet and Transformer for Mobile Application},
+  author={Zheng, Chuanyang},
+  journal={arXiv preprint arXiv:2501.15369},
+  year={2025}
+}
+```
