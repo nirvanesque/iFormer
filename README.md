@@ -22,7 +22,7 @@ surpassing the recently proposed MobileNetV4 under similar latency constraints. 
 <br/>
 
 ## **What's New** 💥💥💥
-- [2025/1/23] Our paper has beed accepted by ICLR 2025.
+- [2025/1/23] Our paper has been accepted to ICLR 2025.
 - [2024/12/1] All models have been released.
 
 ## Main Results on ImageNet with Pretrained Models
