@@ -18,7 +18,10 @@ parser.add_argument('--ckpt', default=None, type=str)
 if __name__ == "__main__":
     # Load a pre-trained version of MobileNetV2
     args = parser.parse_args()
-    model = create_model(args.model, num_classes=1000, drop_path_rate=0., layer_scale_init_value=1e-6)
+    if args.model == 'iFormer_h':
+        model = create_model(args.model, num_classes=1000, drop_path_rate=0., layer_scale_init_value=1e-6)
+    else:
+        model = create_model(args.model, num_classes=1000, drop_path_rate=0., layer_scale_init_value=0.)
     if args.ckpt:
         model.load_state_dict(torch.load(args.ckpt)['model'])
     utils.replace_batchnorm(model)

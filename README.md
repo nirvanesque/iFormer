@@ -143,6 +143,7 @@ python export_coreml.py --model=iFormer_m --resolution=512
 Benchmark the compiled model using Xcode (version 15.4) on an iPhone 13 (iOS 17.7), giving you the following latency.
 ![](./figures/xcode.png)
 * You can change the software version you want, but we have noticed that different iOS versions may affect latency measurements.
+* Some specific latency variations across different devices and iOS versions can be found at [issues 4](https://github.com/ChuanyangZheng/iFormer/issues/4)
 ## Downstream Tasks
 
 [Object Detection on COCO](detection/README.md)<br>

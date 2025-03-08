@@ -914,7 +914,7 @@ def iFormer_l2_faster(pretrained=False, in_22k=False, **kwargs):
     depths = [3, 3, 46, 9]
     block_types = ['ConvBlock_k7_r4'] * 3 + ['ConvBlock_k7_r4'] * 3 + ['ConvBlock_k7_r4'] * 12 + \
                   ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wsp1_fa1', 'FFN2d_r3'] * 1 +\
-                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 9 + \
+                  ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 8 + \
                   ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_ws16_wre1_fa1', 'FFN2d_r3'] * 1 + \
                   ['RepCPE_k3', 'SHMABlock_r1_hdrr2_act0_nh1_fa1', 'FFN2d_r3'] * 1 + ['ConvBlock_k7_r4'] + \
                   ['RepCPE_k3', 'SHMABlock_r1_hdrr4_act0_nh1_fa1', 'FFN2d_r3'] * 3
