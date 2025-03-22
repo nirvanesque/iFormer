@@ -36,6 +36,14 @@ surpassing the recently proposed MobileNetV4 under similar latency constraints. 
 | iFormer-H  |   99.0    | 15.5  |      -      |   84.8    |                                                     [300e](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_h.pth)                                                     |                                                           [300e](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_h_224.mlpackage.zip)                                                            |                                                     [300e](https://github.com/ChuanyangZheng/iFormer/releases/download/v0.9/iFormer_h.out)                                                      |
 * iFormer-L2 is trained with distillation for 450 epochs.
 
+### Hugging Face🤗
+You can also download all the models on [Hugging Face](https://huggingface.co/BillionZheng/iFormer)
+in one line of code.
+```python
+from huggingface_hub import hf_hub_download
+filepath = hf_hub_download(repo_id="BillionZheng/iFormer", filename="iFormer_m.out")
+```
+
 ## Getting Started
 ### Requirements
 ```bash
